@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Appointment.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">A1</a> &gt; <a href="index.source.html" class="el_package">com.example.a1.model</a> &gt; <span class="el_source">Appointment.java</span></div><h1>Appointment.java</h1><pre class="source lang-java linenums">package com.example.a1.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import javax.validation.constraints.NotBlank;
+
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.UUID;
+
+// appointment oclass
+public class Appointment {
+    private final UUID id;   // unique appointment ID
+    private final String date;    // current day date
+    @NotBlank
+    private final String pName;     // patient name
+
+    // constructor
+<span class="nc" id="L20">    public Appointment(@JsonProperty(&quot;id&quot;) UUID id, @JsonProperty(&quot;name&quot;) String pName) {</span>
+<span class="nc" id="L21">        this.id = id;</span>
+<span class="nc" id="L22">        this.pName = pName;</span>
+<span class="nc" id="L23">        this.date = LocalDate.now().toString();</span>
+<span class="nc" id="L24">    }</span>
+
+    public UUID getID() {
+<span class="nc" id="L27">        return id;</span>
+    }
+
+    public String getName() {
+<span class="nc" id="L31">        return pName;</span>
+    }
+
+    public String getDate() {
+<span class="nc" id="L35">        return LocalDate.now().toString();</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

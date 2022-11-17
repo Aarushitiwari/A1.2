@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>AppointmentService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">A1</a> &gt; <a href="index.source.html" class="el_package">com.example.a1.service</a> &gt; <span class="el_source">AppointmentService.java</span></div><h1>AppointmentService.java</h1><pre class="source lang-java linenums">package com.example.a1.service;
+
+import com.example.a1.dao.AppointmentDAO;
+import com.example.a1.model.Appointment;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
+
+@Service
+public class AppointmentService {
+    private final AppointmentDAO appointmentDAO;
+
+    @Autowired
+<span class="fc" id="L18">    public AppointmentService(@Qualifier(&quot;invalidDao&quot;) AppointmentDAO appointmentDAO) {</span>
+<span class="fc" id="L19">        this.appointmentDAO = appointmentDAO;</span>
+<span class="fc" id="L20">    }</span>
+
+    public int addAppointment(Appointment appointment) {
+<span class="nc" id="L23">        return appointmentDAO.insertAppointment(appointment);</span>
+    }
+
+    public List&lt;Appointment&gt; getAllAppointments() {
+<span class="nc" id="L27">        return appointmentDAO.selectAllAppointments();</span>
+    }
+
+    public Optional&lt;Appointment&gt; getAppointmentById(UUID id) {
+<span class="nc" id="L31">        return appointmentDAO.selectAppointmentById(id);</span>
+    }
+
+    public List&lt;Appointment&gt; getAppointmentByDate(String date) {
+<span class="nc" id="L35">        System.out.println(&quot;inside service&quot; + date);</span>
+<span class="nc" id="L36">        return appointmentDAO.selectAppointmentByDate(date);</span>
+    }
+
+    public int deleteAppointment(UUID id) {
+<span class="nc" id="L40">        return appointmentDAO.deleteAppointmentById(id);</span>
+    }
+
+    public int updateAppointment(UUID id, Appointment newAppointment) {
+<span class="nc" id="L44">        return appointmentDAO.updateAppointmentById(id, newAppointment);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
